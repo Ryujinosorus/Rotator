@@ -105,6 +105,7 @@ namespace com.technical.test
     {
         public override void OnInspectorGUI()
         {
+            DrawDefaultInspector();
             if (GUILayout.Button("Open Rotator panel"))
             {
                 RotatorEditor window = (RotatorEditor)EditorWindow.GetWindow(typeof(RotatorEditor), false, "Rotators Multiple Setter");
