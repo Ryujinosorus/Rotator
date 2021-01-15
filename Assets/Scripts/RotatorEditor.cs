@@ -43,6 +43,15 @@ namespace com.technical.test
         {
             //Pour la responsivite
             scrollPosition = GUILayout.BeginScrollView(scrollPosition, true, true, GUILayout.Width(position.width), GUILayout.Height(position.height));
+
+            //On ne peux pas modifier entre l'event Layout et Repaint 
+            try {reDraw();} catch (System.Exception) { };
+            GUILayout.EndScrollView();
+
+        }
+        //Lance DrawSettings sur tout les object dans SelectedGO
+        private void reDraw()
+        {
             //Generation du tableau dans la fenetre
             ScriptableObject scriptableObj = this;
             SerializedObject serialObj = new SerializedObject(scriptableObj);
@@ -67,13 +76,6 @@ namespace com.technical.test
                     }
                 }
             }
-            reDraw();
-            GUILayout.EndScrollView();
-
-        }
-        //Lance DrawSettings sur tout les object dans SelectedGO
-        private void reDraw()
-        {
             for (int i = 0; i < SelectedGO.Length; i++)
             {
                 if (SelectedGO[i] != null) DrawSettings(i);
