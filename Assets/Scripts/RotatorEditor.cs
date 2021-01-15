@@ -100,6 +100,7 @@ namespace com.technical.test
             rp.rotationsSettings.TimeToRotateInSeconds = EditorGUILayout.FloatField("Time to rotate", rp.rotationsSettings.TimeToRotateInSeconds);
             if (GUILayout.Button("Save"))
             {
+                Debug.Log(SelectedGO[i].name + " has been modified successfully!");
                 rp.Paste(SelectedGO[i].GetComponent<Rotator>());
             }
         }
